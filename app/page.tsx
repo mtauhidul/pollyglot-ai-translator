@@ -12,7 +12,7 @@ export default function ChatbotPage() {
         : [
             {
               role: "system",
-              content: "Hello! How can I assist you today?",
+              content: "Hello! What do you want to translate today?",
             },
           ];
     }
