@@ -12,14 +12,16 @@ export default function ChatbotPage() {
         : [
             {
               role: "system",
-              content: "Hello! What do you want to translate today?",
+              content:
+                "Hello! I’m PollyGlot, your multilingual assistant. I specialize in translating any language into Bengali. What would you like to translate today?",
             },
           ];
     }
     return [
       {
         role: "system",
-        content: "Hello! What do you want to translate today?",
+        content:
+          "Hello! I’m PollyGlot, your multilingual assistant. I specialize in translating any language into Bengali. What would you like to translate today?",
       },
     ];
   });
