@@ -1,68 +1,64 @@
-import Image from "next/image";
-import { socialLinks } from "./config";
-
-export default function Page() {
+export default function ChatbotPage() {
   return (
-    <section>
-      <a href={socialLinks.twitter} target="_blank">
-        <Image
-          src="/profile.png"
-          alt="Profile photo"
-          className="rounded-full bg-gray-100 block lg:mt-5 mt-0 lg:mb-5 mb-10 mx-auto sm:float-right sm:ml-5 sm:mb-5 grayscale hover:grayscale-0"
-          unoptimized
-          width={160}
-          height={160}
-          priority
-        />
-      </a>
-
-      <h1 className="mb-8 text-2xl font-medium tracking-tight">
-        Portfolio, made simple!
-      </h1>
-
-      <div className="prose prose-neutral dark:prose-invert">
-        <p>
-          A clean, fast, and lightweight portfolio template built with Next.js,
-          Vercel, and Tailwind CSS for optimal performance.
-        </p>
-        <p>
-          Nextfolio includes all the essentials for a stunning portfolio: SEO,
-          MDX support, RSS, Atom, & JSON feeds, analytics, tweet & YouTube
-          embeds, KaTeX integration, and{" "}
-          <a
-            target="_blank"
-            href="https://github.com/1msirius/Nextfolio?tab=readme-ov-file#features"
-          >
-            more
-          </a>
-          .
-        </p>
-        <p>
-          Nextfolio is{" "}
-          <a href={socialLinks.github} target="_blank">
-            open-source
-          </a>{" "}
-          and fully customizable, making it easy to add more features.
-        </p>
-        <p>
-          <a
-            href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F1msirius%2FNextfolio"
-            target="_blank"
-          >
-            Deploy
-          </a>{" "}
-          your Nextfolio site with Vercel in minutes and follow the set up
-          instructions in the{" "}
-          <a href="/blog/getting-started">Getting Started</a> post.
-        </p>
-        <p>
-          Built and maintained by{" "}
-          <a href="https://imsirius.xyz/" target="_blank">
-            Sirius
-          </a>
-          .
-        </p>
+    <section className="flex flex-col p-4 h-screen border border-gray-900 rounded-lg">
+      <div className="flex-1">
+        <div
+          className="
+          flex flex-col
+          h-100
+          overflow-y-auto 
+        "
+        >
+          <div className="mb-4 h-96 overflow-y-auto">
+            <div className="mb-4 text-left">
+              <p className="bg-[#035A9D] text-justify text-white font-semibold p-4 rounded-lg inline-block w-auto max-w-[70%]">
+                Hello! How can I assist you today? Hello! Hello! How can I
+                assist you today? Hello! Hello! How can I assist you today?
+                Hello!
+              </p>
+            </div>
+            <div className="mb-4  text-right">
+              <p
+                className="bg-[#65DA65]  text-justify text-black p-4 rounded-lg inline-block 
+                font-semibold 
+              w-auto max-w-[70%]"
+              >
+                This box is human message box This box is human message box This
+                box is human message box
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <form className="flex items-center">
+        <input
+          type="text"
+          className="flex-1 p-4 rounded-l-lg border border-gray-300 border-r-0"
+          placeholder="Type your message..."
+        />
+        <button
+          type="submit"
+          className="p-4 rounded-r-lg border border-gray-300 bg-transparent
+          hover:bg-gray-100 transition-colors duration-300 ease-in-out text-gray-500 hover:text-gray-600  cursor-pointer
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-6 h-6 text-blue-500"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 12h14M12 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+      </form>
     </section>
   );
 }
