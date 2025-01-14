@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
 };
 
-const cx = (...classes) => classes.filter(Boolean).join(" ");
+const cx = (...classes: string[]) => classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
   children,
@@ -75,15 +75,11 @@ export default function RootLayout({
       <body className="antialiased flex flex-col min-h-screen">
         <ThemeProvider
           attribute="class"
-          defaultTheme="
-          light"
+          defaultTheme="light" // Fixed: Removed leading space
           enableSystem
           disableTransitionOnChange
         >
-          <main
-            className="flex-auto min-w-0 flex flex-col px-6 sm:px-4 md:px-0 max-w-[640px] w-full mx-auto
-            h-screen"
-          >
+          <main className="flex-auto min-w-0 flex flex-col px-6 sm:px-4 md:px-0 max-w-[640px] w-full mx-auto h-screen">
             <Navbar />
             {children}
             <Footer />

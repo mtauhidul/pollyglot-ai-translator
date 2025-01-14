@@ -27,7 +27,6 @@ export default function ChatbotPage() {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Save messages to sessionStorage whenever they change
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.sessionStorage.setItem("chatMessages", JSON.stringify(messages));
@@ -40,10 +39,9 @@ export default function ChatbotPage() {
     if (!inputValue.trim()) return;
 
     const userMessage = inputValue;
-    setInputValue(""); // Clear input after submission
-    setIsLoading(true); // Start loading spinner
+    setInputValue("");
+    setIsLoading(true);
 
-    // Add user message
     setMessages((prev) => [
       ...prev,
       {
@@ -57,7 +55,6 @@ export default function ChatbotPage() {
         (await Translate(userMessage)) ||
         "I'm sorry, I didn't understand that.";
 
-      // Add system response
       setMessages((prev) => [
         ...prev,
         {
@@ -75,13 +72,12 @@ export default function ChatbotPage() {
         },
       ]);
     } finally {
-      setIsLoading(false); // Stop loading spinner
+      setIsLoading(false);
     }
   };
 
   return (
     <section className="flex flex-col p-4 h-screen border border-gray-900 rounded-lg">
-      {/* Chat Area */}
       <div className="flex-1">
         <div className="flex flex-col h-96 overflow-y-auto">
           <div className="mb-4 space-y-4">
@@ -107,7 +103,6 @@ export default function ChatbotPage() {
         </div>
       </div>
 
-      {/* Input Form */}
       <form
         className="flex items-center mt-4"
         onSubmit={handleSendMessage}
@@ -119,12 +114,12 @@ export default function ChatbotPage() {
           onChange={(e) => setInputValue(e.target.value)}
           className="flex-1 p-4 rounded-l-lg border border-gray-300 border-r-0"
           placeholder="Type your message..."
-          disabled={isLoading} // Disable input during loading
+          disabled={isLoading}
         />
         <button
           type="submit"
           className="p-4 rounded-r-lg border border-gray-300 bg-gray-200 hover:bg-gray-300 transition-colors duration-300 text-gray-700 hover:text-gray-800 cursor-pointer"
-          disabled={isLoading || !inputValue.trim()} // Disable button if loading or input is empty
+          disabled={isLoading || !inputValue.trim()}
         >
           {isLoading ? (
             <svg
