@@ -6,7 +6,7 @@ import { Translate } from "./services";
 export default function ChatbotPage() {
   const [messages, setMessages] = useState(() => {
     // Retrieve messages from sessionStorage or initialize with default message
-    const savedMessages = sessionStorage.getItem("chatMessages");
+    const savedMessages = window.sessionStorage.getItem("chatMessages");
     return savedMessages
       ? JSON.parse(savedMessages)
       : [
@@ -22,7 +22,7 @@ export default function ChatbotPage() {
 
   // Save messages to sessionStorage whenever they change
   useEffect(() => {
-    sessionStorage.setItem("chatMessages", JSON.stringify(messages));
+    window.sessionStorage.setItem("chatMessages", JSON.stringify(messages));
   }, [messages]);
 
   const handleSendMessage = async (e: FormEvent<HTMLFormElement>) => {
