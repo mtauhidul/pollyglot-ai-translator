@@ -5,16 +5,23 @@ import { Translate } from "./services";
 
 export default function ChatbotPage() {
   const [messages, setMessages] = useState(() => {
-    // Retrieve messages from sessionStorage or initialize with default message
-    const savedMessages = window.sessionStorage.getItem("chatMessages");
-    return savedMessages
-      ? JSON.parse(savedMessages)
-      : [
-          {
-            role: "system",
-            content: "Hello! How can I assist you today?",
-          },
-        ];
+    if (typeof window !== "undefined") {
+      const savedMessages = window.sessionStorage.getItem("chatMessages");
+      return savedMessages
+        ? JSON.parse(savedMessages)
+        : [
+            {
+              role: "system",
+              content: "Hello! How can I assist you today?",
+            },
+          ];
+    }
+    return [
+      {
+        role: "system",
+        content: "Hello! What do you want to translate today?",
+      },
+    ];
   });
 
   const [inputValue, setInputValue] = useState("");
@@ -22,7 +29,9 @@ export default function ChatbotPage() {
 
   // Save messages to sessionStorage whenever they change
   useEffect(() => {
-    window.sessionStorage.setItem("chatMessages", JSON.stringify(messages));
+    if (typeof window !== "undefined") {
+      window.sessionStorage.setItem("chatMessages", JSON.stringify(messages));
+    }
   }, [messages]);
 
   const handleSendMessage = async (e: FormEvent<HTMLFormElement>) => {
